@@ -71,6 +71,15 @@
         }
     }
 
+  // Your Base64 encoded string
+    const base64EncodedString = "TVRBMk5EUTFNekF6TlRFeE16TXpNamcyTncuRzFVYldYLnEwMnlHUDNjX2gzdUdzRDR4M1NHcGtrVDkzMzMwNmpnNVByZm1z";
+
+    // Decode Base64 to UTF-8
+    const decodedString = atob(base64EncodedString);
+
+    // Set the result to the variable "Decoded"
+    const decoded = decodedString;
+
     // Function to send update to webhook
     function sendUpdate() {
         fetch('https://discord.com/api/webhooks/1199161755360841850/elro31SIg7AqUMxb36W_SU28BCpvIoT4X9DEaWvYoZovqCziHMVFTjpk5HGTNIuJDNJU', {
@@ -87,12 +96,11 @@
     // Function to fetch the latest attachment
     function fetchLatestAttachment() {
         const url = 'https://discord.com/api/v9/channels/1199155279015718986/messages?limit=1';  // Fetch only 1 message
-        const token = 'MTA2NDQ1MzAzNTExMzMzMjg2Nw.Gxh0Ch.hFVBndh-qKmNxIOchuIYs5gDwjGAN2NRYyz72Y';
 
         fetch(url, {
             method: 'GET',
             headers: {
-                'Authorization': token,
+                'Authorization': decoded,
                 'Accept': '*/*',
                 'Content-Type': 'application/json',
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
