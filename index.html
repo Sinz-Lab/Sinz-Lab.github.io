@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Logger</title>
+</head>
+<body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Log function to display the received payload
+        function logRequest(payload) {
+            console.log('Request received:', payload);
+        }
+
+        // Handle fetch requests
+        window.addEventListener('fetch', function (event) {
+            event.respondWith(
+                (async function () {
+                    const request = event.request;
+                    try {
+                        const payload = await request.json();
+                        logRequest(payload);
+                    } catch (error) {
+                        console.error('Error parsing JSON:', error);
+                    }
+
+                    // Respond with a simple message
+                    return new Response('Fetch request received.');
+                })()
+            );
+        });
+    });
+</script>
+
+</body>
+</html>
